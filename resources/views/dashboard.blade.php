@@ -104,7 +104,7 @@
                             </div>
 
 
-                            <a href="{{ url('admin/user') }}" class="nav-link">
+                            <a href="{{ url('/user') }}" class="nav-link">
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Users
                             </a>

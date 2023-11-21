@@ -108,7 +108,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                 Users
                             </a>
-                            <a href="{{ url('admin/project') }}" class="nav-link">
+                            <a href="{{ url('/project') }}" class="nav-link">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 Projects
                             </a>

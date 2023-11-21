@@ -1,4 +1,4 @@
-@extends('projects.layout')
+@extends('project.layout')
 
 @section('content')
     <div class="row">

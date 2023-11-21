@@ -1,6 +1,6 @@
 <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-@extends('projects.layout')
+@extends('project.layout')
 
 @section('content')
     <div class="row mt-5">
@@ -43,11 +43,11 @@
                 <h2 >Project Manager</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{route('project.create')}}"> Create New Project</a>
+                <a class="btn btn-success mb-3" href="{{route('project.create')}}"> Create New Project</a>
             </div>
 
             <div class="pull-left">
-                <a class="btn btn-secondary"  href="{{route('home')}}"><i class="fa fa-backward"></i> Back</a>
+                <a class="btn btn-secondary mb-2"  href="{{route('home')}}"><i class="fa fa-backward"></i> Back</a>
             </div>
         </div>
     </div>

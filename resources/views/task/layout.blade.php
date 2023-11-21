@@ -1,0 +1,18 @@
+@extends('dashboard')
+
+@section('task')
+<html>
+<head>
+    <title>Tasks</title>
+
+</head>
+<body>
+
+<div class="container">
+    @yield('content')
+</div>
+
+</body>
+</html>
+
+@endsection

@@ -1,6 +1,6 @@
 @extends('dashboard')
 
-@section('user')
+@section('project')
 <html>
 <head>
     <title>List</title>
@@ -11,7 +11,6 @@
     @yield('content')
 </div>
 
-{{-- <script src="/js/scripts.js"></script> --}}
 </body>
 </html>
 

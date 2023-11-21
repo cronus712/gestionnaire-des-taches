@@ -1,4 +1,4 @@
-<link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+{{-- <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
 
 @extends('user.layout')
 
@@ -41,11 +41,11 @@
                 <h2 >User Manager</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{route('user.create')}}"> Create New user</a>
+                <a class="btn btn-success mb-3" href="{{route('user.create')}}"> Create New user</a>
             </div>
 
             <div class="pull-left">
-                <a class="btn btn-secondary"  href="{{route('home')}}"><i class="fa fa-backward"></i> Back</a>
+                <a class="btn btn-secondary mb-2"  href="{{route('home')}}"><i class="fa fa-backward"></i> Back</a>
             </div>
         </div>
     </div>
@@ -65,7 +65,7 @@
             <th>email</th>
             <th>role</th>
 
-            <th width="280px">Action</th>
+            <th width="240px">Action</th>
         </tr>
         @foreach ($users as $user)
         <tr>
@@ -77,7 +77,7 @@
             <td>
                 <form action="{{ route('user.destroy',$user->id) }}" method="POST">
 
-                    <a class="btn btn-info" href="{{route('user.show',$user->id)}}">Show</a>
+                    {{-- <a class="btn btn-info" href="{{route('user.show',$user->id)}}">Show</a> --}}
 
                     <a class="btn btn-primary" href="{{route('user.edit',$user->id)}}">Edit</a>
 

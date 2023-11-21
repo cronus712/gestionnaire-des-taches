@@ -55,4 +55,11 @@ class User extends Authenticatable
     //  {
     //     return $this->belongsToMany(Project::class);
     //  }
+
+    protected static function booted()
+    {   parent::boot();
+        static::deleted(function ($user) {
+            $user->tasks()->delete();
+        });
+    }
 }

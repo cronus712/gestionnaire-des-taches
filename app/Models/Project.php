@@ -25,4 +25,11 @@ class Project extends Model
     // {
     //     return $this->belongsToMany(User::class);
     // }
+
+    protected static function booted()
+    {   parent::boot();
+        static::deleted(function ($project) {
+            $project->tasks()->delete();
+        });
+    }
 }

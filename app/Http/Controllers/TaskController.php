@@ -28,7 +28,7 @@ class TaskController extends Controller
           ->paginate(5);
 
 
-        return view('tasks.index',compact('tasks', 'users'))
+        return view('task.index',compact('tasks', 'users'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
@@ -37,10 +37,10 @@ class TaskController extends Controller
      */
     public function create(User $user, Project $project)
     {
-        $user = User::all();
-        $project = Project::all();
+        $users = User::all();
+        $projects = Project::all();
 
-        return view('task.create', compact('user','project'));
+        return view('task.create', compact('users','projects'));
     }
 
     /**

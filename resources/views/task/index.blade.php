@@ -22,12 +22,12 @@
 </div>
     <div class="row mw-">
 
-        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{{ route('tasks.index') }}" method="GET" role="search" style="width: 20%;">
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0" action="{{ route('task.index') }}" method="GET" role="search" style="width: 20%;">
             <div class="input-group">
                 <input class="form-control" type="text" name="term" placeholder="Search for..." aria-label="Search tasks" aria-describedby="btnNavbarSearch" id="term"/>
                 <button class="btn btn-primary" id="btnNavbarSearch" type="submit"><i class="fas fa-search"></i></button>
 
-                <a href="{{ route('tasks.index') }}" >
+                <a href="{{ route('task.index') }}" >
                     <span class="mt-3" style="margin-left: 10px;">
                         <button class="btn btn-light " type="button" title="Refresh page" style="font-size: 20px">
                             <span class="fa fa-refresh " ></span>
@@ -44,11 +44,11 @@
                 <h2 >Task Manager</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{route('tasks.create')}}"> Create New task</a>
+                <a class="btn btn-success mb-3" href="{{route('task.create')}}"> Create New task</a>
             </div>
 
             <div class="pull-left">
-                <a class="btn btn-secondary"  href="{{route('home')}}"><i class="fa fa-backward"></i> Back</a>
+                <a class="btn btn-secondary mb-2"  href="{{route('home')}}"><i class="fa fa-backward"></i> Back</a>
             </div>
         </div>
     </div>
@@ -66,7 +66,7 @@
             <th>Details</th>
             <th>User</th>
             <th>Project</th>
-            <th width="280px">Action</th>
+            <th width="240px">Action</th>
         </tr>
 
         @foreach ($tasks as $task)
@@ -80,11 +80,11 @@
             <td>{{$task->user->name }}</td>
             <td>{{$task->project->name}}</td>
             <td>
-                <form action="{{ route('tasks.destroy',$task->id) }}" method="POST">
+                <form action="{{ route('task.destroy',$task->id) }}" method="POST">
 
-                    <a class="btn btn-info" href="{{route('tasks.show',$task->id)}}">Show</a>
+                    {{-- <a class="btn btn-info" href="{{route('tasks.show',$task->id)}}">Show</a> --}}
 
-                    <a class="btn btn-primary" href="{{route('tasks.edit',$task->id)}}">Edit</a>
+                    <a class="btn btn-primary" href="{{route('task.edit',$task->id)}}">Edit</a>
 
                     @csrf
                     @method('DELETE')

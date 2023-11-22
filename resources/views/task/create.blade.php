@@ -7,7 +7,7 @@
             <h2>Add New task</h2>
         </div>
         <div class="float-end">
-            <a class="btn btn-primary" href="{{route('tasks.index')}}"> Back</a>
+            <a class="btn btn-primary" href="{{route('task.index')}}"> Back</a>
         </div>
     </div>
 </div>
@@ -23,7 +23,7 @@
     </div>
 @endif
 
-<form action="{{ route('tasks.store') }}" method="POST">
+<form action="{{ route('task.store') }}" method="POST">
     @csrf
 
      <div class="row">

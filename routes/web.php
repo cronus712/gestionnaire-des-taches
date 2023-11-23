@@ -23,10 +23,14 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('user', UserController::class);
-Route::resource('project', ProjectController::class);
-Route::resource('task', TaskController::class);
+Route::resource('user', UserController::class)->middleware('isAdmin');
+Route::resource('project', ProjectController::class)->middleware('auth');
+Route::resource('task', TaskController::class)->middleware('auth');
+Route::get('/accessdenied', function() {
 
+    return view('errors.accessdenied');
+
+});
 
 
 // Route::get('/dashboard', function() {

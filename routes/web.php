@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-
+use App\Mail\SampleMail;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,10 +30,11 @@ Route::resource('project', ProjectController::class)->middleware('auth');
 Route::resource('task', TaskController::class)->middleware('auth');
 Route::get('/accessdenied', function() {
 
-    return view('errors.accessdenied');
-
+return view('errors.accessdenied');
 });
 
+
+Route::get('/send-mail', [SendMailController::class, 'index']);
 
 // Route::get('/dashboard', function() {
 //     return view('dashboard');

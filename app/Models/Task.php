@@ -16,7 +16,8 @@ class Task extends Model
       'name',
       'detail',
       'user_id',
-      'project_id'
+      'project_id',
+      'priority'
     ];
 
     public function user()

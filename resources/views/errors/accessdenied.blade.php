@@ -58,11 +58,11 @@
 
 <body>
 
-    <div class="container">
+    <div class="container" >
 
       <div class="row text-center">
 
-        <div class="col-lg-6 offset-lg-3 col-sm-6 offset-sm-3 col-12 p-3 error-main">
+        <div class="col-lg-6 offset-lg-3 col-sm-6 offset-sm-3 col-12 p-3 error-main" style="border-radius: 3%; background-color:rgb(244, 84, 84)">
 
           <div class="row">
 
@@ -70,7 +70,7 @@
 
               <h1 class="m-0">Alert</h1>
               <div class="pull-right">
-                <a class="btn btn-primary" href="{{route('home')}}"> Back</a>
+                <a class="btn btn-warning" href="{{route('home')}}"> Back</a>
                </div>
 
               <h6>Access denied ! not enough permissions</h6>

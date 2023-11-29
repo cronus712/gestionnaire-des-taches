@@ -65,7 +65,23 @@
                   </select>
             </div>
             </div>
+            {{-- <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Send email notification to user:</strong>
+                    <input type="checkbox" name="send_notification" value="1">
+                </div>
+            </div> --}}
 
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Priority:</strong>
+                      <select name="priority" class="form-control">
+                          <option value="weak" style="color:green"> Weak </option>
+                          <option value="medium" style="color: orange">medium</option>
+                          <option value="strong" style="color: red">strong</option>
+                      </select>
+                </div>
+                </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                 <button type="submit" class="btn btn-primary">Submit</button>

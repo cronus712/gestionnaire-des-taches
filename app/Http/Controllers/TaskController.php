@@ -52,7 +52,8 @@ class TaskController extends Controller
             'name' => 'required|unique:tasks,name',
             'detail' => 'required',
             'user_id' => 'required',
-            'project_id' => 'required'
+            'project_id' => 'required',
+            'priority' => 'required'
         ]);
 
         Task::create($request->all());
@@ -87,10 +88,12 @@ class TaskController extends Controller
     public function update(Request $request, Project $project, User $user, Task $task)
     {
        $request->validate([
-        'name' => 'required|unique:tasks,name',
+        'name' => 'required',
         'detail' => 'required',
         'user_id' => 'required',
-        'project_id' =>'required'
+        'project_id' =>'required',
+        'priority' => 'required'
+
        ]);
 
        $task->update($request->all());

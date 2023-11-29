@@ -66,6 +66,7 @@
             <th>Details</th>
             <th>User</th>
             <th>Project</th>
+            <th>Priority</th>
             <th width="240px">Action</th>
         </tr>
 
@@ -79,6 +80,7 @@
             <td>{{ $task->detail }}</td>
             <td>{{$task->user->name }}</td>
             <td>{{$task->project->name}}</td>
+            <td>{{ $task->priority }}</td>
             <td>
                 <form action="{{ route('task.destroy',$task->id) }}" method="POST">
 

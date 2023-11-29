@@ -7,7 +7,7 @@
                 <h2>Edit task</h2>
             </div>
             <div class="float-end">
-                <a class="btn btn-primary" href="{{route('tasks.index')}}"> Back</a>
+                <a class="btn btn-primary" href="{{route('task.index')}}"> Back</a>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
         </div>
     @endif
 
-    <form action="{{ route('tasks.update',$task->id) }}" method="POST">
+    <form action="{{ route('task.update',$task->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -64,6 +64,18 @@
                 </select>
             </div>
             </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Priority:</strong>
+                      <select name="priority" class="form-control">
+                        <option value="{{ $task->id}}">{{ $task->priority}}</option>
+                          <option value="weak" style="color:green"> Weak </option>
+                          <option value="medium" style="color: orange">medium</option>
+                          <option value="strong" style="color: red">strong</option>
+                      </select>
+                </div>
+                </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
               <button type="submit" class="btn btn-primary">Submit</button>
             </div>

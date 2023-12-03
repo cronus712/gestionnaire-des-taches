@@ -31,17 +31,21 @@ class TaskAssigned extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     /**
      * Get the mail representation of the notification.
      */
     public function toMail(object $notifiable): MailMessage
+
     {
+        $userName = Auth::user()->name;
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->subject('Task Assignment Notification')
+                    ->line("Hello $notifiable->name,")
+                    ->line("You have been assigned a new task by $userName.")
+                    ->action('Notification Action', url('/task'))
                     ->line('Thank you for using our application!');
     }
 

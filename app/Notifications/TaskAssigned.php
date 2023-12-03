@@ -4,8 +4,10 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 
 class TaskAssigned extends Notification
 {
@@ -50,8 +52,21 @@ class TaskAssigned extends Notification
      */
     public function toArray(object $notifiable): array
     {
-        return [
-            'data' =>' A new task has been assigned to you '. $this->name.' by a user'
-        ];
+    //      if($this->request->isMethod('post')) {
+    //     return [
+    //         'data' =>' A new task has been assigned to you by'.' '.Auth::user()->name
+    //     ];
+    //   }
+
+    //   else  {
+    //     return [
+    //         'data' =>' A task has been updated by'.' '.Auth::user()->name
+    //     ];
+    //   }
+
+      return [
+        'data' =>' A new task has been assigned to you by'.' '.Auth::user()->name
+    ];
+
     }
 }

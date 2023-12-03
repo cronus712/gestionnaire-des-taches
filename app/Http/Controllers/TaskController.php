@@ -58,8 +58,8 @@ class TaskController extends Controller
             'priority' => 'required'
         ]);
 
-        Task::create($request->all());
-        User::find(Auth ::user()->id)->notify(new TaskAssigned($task->name));
+       $task = Task::create($request->all());
+        User::find($task->user_id)->notify(new TaskAssigned($task->name));
         return redirect()->route('task.index')
                          ->with('Success', 'Task created successfully !');
 
@@ -99,6 +99,7 @@ class TaskController extends Controller
        ]);
 
        $task->update($request->all());
+       User::find(Auth::user()->id)->notify(new TaskAssigned($task->name));
 
        return redirect()->route('task.index')
                        ->with('Success', 'Task updated successfully !');

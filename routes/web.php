@@ -1,13 +1,14 @@
 <?php
 
+use App\Mail\SampleMail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\SendMailController;
-use App\Http\Controllers\TaskController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Mail\SampleMail;
-use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +40,12 @@ Route::get('/mark-as-read', [App\Http\Controllers\TaskController::class,'markAsR
 Route::controller(TaskController::class)->group(function () {
     Route::get('/calendar', 'calendarIndex')->name('event.get');
     Route::post('/calendar', 'calendarStore')->name('event.store');
+});
+
+Route::prefix('profile')->group(function() {
+    Route::get('edit/', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('update/{user}', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
 });
 // Route::get('/dashboard', function() {
 //     return view('dashboard');

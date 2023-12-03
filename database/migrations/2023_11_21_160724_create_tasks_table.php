@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('detail');
             $table->string('priority')->default('weak');
+            // $table->date('start');
+            // $table->date('end');
             $table->timestamps();
             $table->softDeletes();
         });

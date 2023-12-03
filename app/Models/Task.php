@@ -11,13 +11,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Task extends Model
 {
     use HasFactory, SoftDeletes;
-
+    protected $guarded = [];
     protected $fillable = [
       'name',
       'detail',
       'user_id',
       'project_id',
-      'priority'
+      'priority',
+    //   'start',
+    //   'end'
     ];
 
     public function user()

@@ -33,9 +33,13 @@ Route::get('/accessdenied', function() {
 return view('errors.accessdenied');
 });
 
+Route::get('/mark-as-read', [App\Http\Controllers\TaskController::class,'markAsRead'])->name('mark-as-read')->middleware('auth');
+// Route::get('/send-mail', [SendMailController::class, 'index']);
 
-Route::get('/send-mail', [SendMailController::class, 'index']);
-
+Route::controller(TaskController::class)->group(function () {
+    Route::get('/calendar', 'calendarIndex')->name('event.get');
+    Route::post('/calendar', 'calendarStore')->name('event.store');
+});
 // Route::get('/dashboard', function() {
 //     return view('dashboard');
 // });

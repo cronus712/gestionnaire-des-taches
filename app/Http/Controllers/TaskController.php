@@ -6,6 +6,8 @@ use App\Models\Project;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Notifications\TaskAssigned;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -14,8 +16,8 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::all();
-        //  $tasks = Task::latest()->paginate(5);
+         //  $tasks = Task::latest()->paginate(5);
+         $users = User::all();
          $projects = Project::all();
          $tasks = Task::where([
             ['name', '!=', null],
@@ -57,7 +59,7 @@ class TaskController extends Controller
         ]);
 
         Task::create($request->all());
-
+        User::find(Auth ::user()->id)->notify(new TaskAssigned($task->name));
         return redirect()->route('task.index')
                          ->with('Success', 'Task created successfully !');
 
@@ -113,4 +115,55 @@ class TaskController extends Controller
         return redirect()->route('task.index')
                          ->with('Success', 'Task deleted successfully !');
     }
+
+    public function markAsRead(){
+        Auth::user()->unreadNotifications->markAsRead();
+        return redirect()->back();
+    }
+
+
+    // public function calendarIndex(Request $request) {
+
+    //         if ($request->ajax()) {
+    //             $data = Task::whereDate('start', '>=', $request->start)
+    //                 ->whereDate('end',   '<=', $request->end)
+    //                 ->get(['id', 'title', 'start', 'end']);
+
+    //             return response()->json($data);
+    //         }
+
+    //         return view('task.calendar');
+
+    // }
+
+    // public function calendarStore(Request $request)
+    // {
+    //     switch ($request->type) {
+    //         case 'add':
+    //             $event = Task::create([
+    //                 'title' => $request->title,
+    //                 'start' => $request->start,
+    //                 'end' => $request->end,
+    //             ]);
+    //             return response()->json($event);
+    //             break;
+
+    //         case 'update':
+    //             $event = Task::find($request->id)->update([
+    //                 'title' => $request->title,
+    //                 'start' => $request->start,
+    //                 'end' => $request->end,
+    //             ]);
+    //             return response()->json($event);
+    //             break;
+
+    //         case 'delete':
+    //             $event = Task::find($request->id)->delete();
+    //             return response()->json($event);
+    //             break;
+
+    //         default:
+    //             break;
+    //     }
+    // }
 }

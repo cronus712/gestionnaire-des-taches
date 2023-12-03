@@ -16,10 +16,12 @@ class TaskAssigned extends Notification
     /**
      * Create a new notification instance.
      */
+    protected $actionType;
     protected $name;
-    public function __construct($name)
+    public function __construct($name, $actionType)
     {
         $this->name = $name;
+        $this->actionType = $actionType;
     }
 
     /**
@@ -52,21 +54,21 @@ class TaskAssigned extends Notification
      */
     public function toArray(object $notifiable): array
     {
-    //      if($this->request->isMethod('post')) {
-    //     return [
-    //         'data' =>' A new task has been assigned to you by'.' '.Auth::user()->name
-    //     ];
-    //   }
+         if($this->actionType === 'post') {
+        return [
+            'data' =>' A new task has been assigned to you by'.' '.Auth::user()->name
+        ];
+      }
 
-    //   else  {
-    //     return [
-    //         'data' =>' A task has been updated by'.' '.Auth::user()->name
-    //     ];
-    //   }
+      else  {
+        return [
+            'data' =>' A task has been updated by'.' '.Auth::user()->name
+        ];
+      }
 
-      return [
-        'data' =>' A new task has been assigned to you by'.' '.Auth::user()->name
-    ];
+    //   return [
+    //     'data' =>' A new task has been assigned to you by'.' '.Auth::user()->name
+    // ];
 
     }
 }
